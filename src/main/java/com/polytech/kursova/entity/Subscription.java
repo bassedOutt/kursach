@@ -16,7 +16,7 @@ public class Subscription {
     @Column(name = "SubscriptionID", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "SubscriptionTypeID", nullable = false)
     private SubscriptionType subscriptionTypeID;
 

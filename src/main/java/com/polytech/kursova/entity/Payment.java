@@ -12,10 +12,6 @@ import java.time.LocalDateTime;
 public class Payment {
     @EmbeddedId
     private PaymentId id;
-    @MapsId("customerID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CustomerID")
-    private Customer customer;
 
     @Column(name = "Ammount", nullable = false)
     private Integer ammount;

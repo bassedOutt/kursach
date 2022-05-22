@@ -30,7 +30,7 @@ public class Customer {
     @Column(name = "PhoneNumber", length = 20)
     private String phoneNumber;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(optional = false)
     @JoinColumn(name = "CreditCardID", nullable = false)
     private CreditCard creditCardID;
 
@@ -40,13 +40,14 @@ public class Customer {
     @Column(name = "UpdatedAt")
     private LocalDateTime updatedAt;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(optional = false)
     @JoinColumn(name = "SubscriptionID", nullable = false)
     private Subscription subscriptionID;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany
+    @JoinColumn(name = "CustomerID")
     private Set<Payment> payments = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "customerID")
+    @OneToMany(mappedBy = "customer")
     private Set<Case> cases = new LinkedHashSet<>();
 }

@@ -14,7 +14,7 @@ public class Salary {
     @EmbeddedId
     private SalaryId id;
     @MapsId("employeeID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "EmployeeID")
     private Employee employee;
 

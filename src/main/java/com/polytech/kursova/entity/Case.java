@@ -18,22 +18,22 @@ public class Case {
     private CaseId id;
 
     @MapsId("customerID")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "CustomerID", nullable = false)
-    private Customer customerID;
+    private Customer customer;
 
     @Column(name = "Description")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "PlatformID")
     private Platform platformID;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "StatusID", nullable = false)
     private Status statusID;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "SubjectID", nullable = false)
     private Subject subjectID;
 
@@ -43,7 +43,7 @@ public class Case {
     @Column(name = "UpdatedAt")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "cases")
-    private Set<EmployeeCase> employeeCases = new LinkedHashSet<>();
+    @ManyToMany(mappedBy = "employeeCases")
+    private Set<Employee> employees = new LinkedHashSet<>();
 
 }

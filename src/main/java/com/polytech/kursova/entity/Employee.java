@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -19,7 +18,7 @@ public class Employee {
     @Column(name = "EmployeeID", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "RoleID")
     private Role roleID;
 
@@ -41,16 +40,11 @@ public class Employee {
     @Column(name = "UpdatedAt")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "employee")
-    private Set<Comment> comments = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "employee")
-    private Set<EmployeeCase> employeeCases = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "employee")
-    private Set<Salary> salaries = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "employeeID")
-    private Set<SoftWarePurchase> softWarePurchases = new LinkedHashSet<>();
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "EmployeeCases",
+            joinColumns = {@JoinColumn(name = "EmployeeID")},
+            inverseJoinColumns = {@JoinColumn(name = "CaseID"), @JoinColumn(name = "CustomerID")}
+    )
+    private Set<Case> employeeCases = new LinkedHashSet<>();
 }

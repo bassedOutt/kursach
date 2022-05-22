@@ -23,7 +23,7 @@ public class Comment {
     private LocalDateTime updatedAt;
 
     @MapsId("authorID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "AuthorID")
     private Employee employee;
 

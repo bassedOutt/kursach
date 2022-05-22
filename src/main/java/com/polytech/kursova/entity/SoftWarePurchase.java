@@ -15,7 +15,7 @@ public class SoftWarePurchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "EmployeeID")
     private Employee employeeID;
 
