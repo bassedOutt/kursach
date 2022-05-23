@@ -1,5 +1,6 @@
 package com.polytech.kursova.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,9 +17,11 @@ public class Payment {
     @Column(name = "Ammount", nullable = false)
     private Integer ammount;
 
+    @JsonIgnore
     @Column(name = "CreatedAt")
     private LocalDateTime createdAt;
 
+    @JsonIgnore
     @Column(name = "UpdatedAt")
     private LocalDateTime updatedAt;
 }

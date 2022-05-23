@@ -1,5 +1,6 @@
 package com.polytech.kursova.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,9 +29,11 @@ public class SoftWarePurchase {
     @Column(name = "WebsiteUrl", length = 256)
     private String websiteUrl;
 
+    @JsonIgnore
     @Column(name = "CreatedAt")
     private LocalDateTime createdAt;
 
+    @JsonIgnore
     @Column(name = "UpdatedAt")
     private LocalDateTime updatedAt;
 

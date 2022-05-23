@@ -1,5 +1,6 @@
 package com.polytech.kursova.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,9 +22,11 @@ public class SubscriptionType {
     @Column(name = "Price", nullable = false)
     private Integer price;
 
+    @JsonIgnore
     @Column(name = "CreatedAt")
     private LocalDateTime createdAt;
 
+    @JsonIgnore
     @Column(name = "UpdatedAt")
     private LocalDateTime updatedAt;
 }

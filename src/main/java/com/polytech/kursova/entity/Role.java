@@ -1,5 +1,6 @@
 package com.polytech.kursova.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,9 +19,11 @@ public class Role {
     @Column(name = "RoleName", nullable = false, length = 30)
     private String roleName;
 
+    @JsonIgnore
     @Column(name = "CreatedAt")
     private Instant createdAt;
 
+    @JsonIgnore
     @Column(name = "UpdatedAt")
     private Instant updatedAt;
 

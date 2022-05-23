@@ -46,4 +46,8 @@ public class Case {
     @ManyToMany(mappedBy = "employeeCases")
     private Set<Employee> employees = new LinkedHashSet<>();
 
+    @OneToMany
+    @JoinColumn(name = "CaseID")
+    @JoinColumn(name = "CustomerID")
+    private Set<Comment> comments;
 }
